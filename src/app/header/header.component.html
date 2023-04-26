@@ -1,0 +1,22 @@
+<nav class = "navbar bg-light">
+    <div class = "container">
+        <div class = "col-10">
+            <a [routerLink]="['/']" class = "navbar-brand text-primary">Home</a> 
+        </div>
+        <div *ngIf = "isLogged()">
+            <button class = "btn btn-primary me-3" [routerLink] = "['/add-new-product']">
+                Add Product
+            </button>
+        </div>
+        <div *ngIf = "!isLogged()">
+            <button class = "btn btn-primary" [routerLink] = "['/login']">
+                Login
+            </button>
+        </div>
+        <div *ngIf = "isLogged()">
+            <button class = "btn btn-primary" (click) = "logout()">
+                Logout
+            </button>
+        </div>
+    </div>
+</nav>

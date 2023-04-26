@@ -1,0 +1,12 @@
+<div class = "container p-4">
+    <div *ngIf = "product">
+        <img src = "{{ product.photo }}" style = "width: 25rem;">
+        <h3>{{ product.name }}</h3>
+        <h4>{{ product.price}}$</h4>
+        <p>{{ product.description }}</p>
+        <div *ngIf = "isLogged()">
+            <button class = "btn btn-primary" [routerLink] = "['/products', product._id, 'edit']">Edit</button>
+            <button class = "btn btn-danger ml-3" (click) = "delete()">Delete</button>
+        </div>
+    </div>
+</div>

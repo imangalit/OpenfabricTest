@@ -1,0 +1,41 @@
+<div class = "container p-4">
+    <div *ngIf = "product">
+        <div class = "d-inline">
+            <img src = "{{ product.photo }}" style = "width: 25rem;" class = "d-inline">
+        </div>
+        <div class = "d-inline">    
+            <form [formGroup] = "editForm" (ngSubmit) = "updateDetails()">
+                <div class = "mt-4">
+                    <label for="name">Name of the product: </label>
+                    <input id="name" type="text" formControlName = "name" class = "form-control w-50">
+                    <div *ngIf="editForm.controls['name'].invalid && editForm.controls['name'].touched" class="alert alert-danger h-10 mt-2 w-50">
+                        <div *ngIf="editForm.controls['name'].errors?.['required']">Name is required.</div>
+                    </div>
+                </div>
+                <div class = "mt-4">
+                    <label for="photo">Photo URL: </label>
+                    <input id="photo" type="text" formControlName = "photo" class = "form-control w-25">
+                    <div *ngIf="editForm.controls['photo'].invalid && editForm.controls['photo'].touched" class="alert alert-danger h-10 mt-2 w-50">
+                        <div *ngIf="editForm.controls['photo'].errors?.['required']">Photo is required.</div>
+                    </div>
+                </div>
+                <div class = "mt-4">
+                    <label for="price">Price $: </label>
+                    <input id="price" type="text" formControlName = "price" class = "form-control w-25">
+                    <div *ngIf="editForm.controls['price'].invalid && editForm.controls['price'].touched" class="alert alert-danger h-10 mt-2 w-50">
+                        <div *ngIf="editForm.controls['price'].errors?.['required']">Price is required.</div>
+                        <div *ngIf="editForm.controls['price'].errors?.['pattern']">Only numbers.</div>
+                    </div>
+                </div>
+                <div class = "mt-4">
+                    <label for="description">Description: </label>
+                    <textarea id="description" type="text" formControlName = "description" class = "form-control w-50"></textarea>
+                    <div *ngIf="editForm.controls['description'].invalid && editForm.controls['description'].touched" class="alert alert-danger h-10 mt-2 w-50">
+                        <div *ngIf="editForm.controls['description'].errors?.['required']">Price is required.</div>
+                    </div>
+                </div>
+                <button class = "mt-4 btn btn-primary" type = "update" [disabled]="editForm.pristine || editForm.invalid">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
